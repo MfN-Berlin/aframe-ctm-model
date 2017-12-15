@@ -6,7 +6,8 @@
 
 ```html
 <a-asset-item id="model" src="bunny.ctm" color="#FFFFFF"></a-asset-item>
-<a-entity id="mesh" ctm="src: #model; " position=" 0 1.5 -2"></a-entity>```
+<a-entity id="mesh" ctm="src: #model; " position=" 0 1.5 -2"></a-entity>
+```
 
 ### Schema
 
