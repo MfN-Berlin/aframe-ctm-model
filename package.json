@@ -16,5 +16,8 @@
     "url": "https://github.com/MfN-Berlin/aframe-ctm-model/issues"
   },
   "homepage": "https://github.com/MfN-Berlin/aframe-ctm-model#readme",
-  "devDependencies": {}
+  "devDependencies": {},
+  "dependencies": {
+    "browserify": "^14.5.0"
+  }
 }
