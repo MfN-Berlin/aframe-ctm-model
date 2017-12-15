@@ -1,6 +1,6 @@
 {
   "name": "aframe-ctm-model",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Load OpenCTM models",
   "main": "index.js",
   "scripts": {
@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/MfN-Berlin/aframe-ctm-model.git"
   },
-  "author": "Melanie Krauth",
+  "author": "Melanie Krauth <melanie.krauth@mfn-berlin.de>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/MfN-Berlin/aframe-ctm-model/issues"

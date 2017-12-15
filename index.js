@@ -14,7 +14,8 @@ AFRAME.registerComponent('ctm', {
         src: {type: 'asset'},
         side: {type: 'number', default: THREE.DoubleSide},
         scale: {type: 'number', default: 1},
-        name: {type: 'string', default: ''},
+        texture: {type: 'string', default: ''},
+        maxSize: {type: 'number', default: 1}
     },
 
     multiple: true,
@@ -28,7 +29,7 @@ AFRAME.registerComponent('ctm', {
 
         ctmLoader.load( this.data.src,   function( bufferGeometry ) {
           var meshPhongMaterial = undefined;
-          if(that.data.name !== ''){
+          if(that.data.texture !== ''){
             meshPhongMaterial = new THREE.MeshPhongMaterial({color: 0xd9d9d9});
           }else{
             meshPhongMaterial = new THREE.MeshPhongMaterial({color: 0xd9d9d9,  vertexColors: THREE.VertexColors});
@@ -36,13 +37,17 @@ AFRAME.registerComponent('ctm', {
           var mesh = new THREE.Mesh(bufferGeometry, meshPhongMaterial);
           mesh.material.side = that.data.side;
 
-          var bBox = new THREE.Box3().setFromObject(mesh);
-          var max = Math.max(bBox.getSize().x, bBox.getSize().y, bBox.getSize().z);
-          var scaleFactor = that.data.scale/max;
-          mesh.scale.multiplyScalar(scaleFactor);
+          if(that.data.maxSize != 1){
+            var bBox = new THREE.Box3().setFromObject(mesh);
+            var max = Math.max(bBox.getSize().x, bBox.getSize().y, bBox.getSize().z);
+            var scaleFactor = that.data.maxSize/max;
+            mesh.scale.multiplyScalar(scaleFactor);
+          }
 
-          if(that.data.name !== ''){
-            mesh.material.map = textureLoader.load(that.data.name);
+          mesh.scale.multiplyScalar(that.data.scale);
+
+          if(that.data.texture !== ''){
+            mesh.material.map = textureLoader.load(that.data.texture);
           }
 
           that.el.setObject3D('mesh', mesh);
@@ -59,7 +64,6 @@ AFRAME.registerComponent('ctm', {
     },
 
     tick: function(){
-
 
     },
 
